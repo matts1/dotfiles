@@ -1,0 +1,8 @@
+[user]
+	name = matts1
+	email = mattstark75@gmail.com
+[core]
+	excludesfile = /home/matt/.gitignore_global
+	autocrlf = input
+[push]
+	default = simple
