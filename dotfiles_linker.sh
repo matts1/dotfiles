@@ -16,3 +16,6 @@ do
     ln -s "$(pwd)/$f" "$result"
   fi
 done
+
+ln -s "$(pwd)/nvim" ~/.config/nvim
+ln -s "$(pwd)/.profile" /home/matt/.zprofile
