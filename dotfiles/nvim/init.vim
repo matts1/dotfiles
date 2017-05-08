@@ -1,6 +1,17 @@
 " zsh
 set shell=zsh
 
+map <Leader>s :SyntasticToggleMode<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
 vnoremap <c-_> :Commentary<CR>
 nnoremap <c-_> :Commentary<CR>
 inoremap <c-_> <c-o>:Commentary<CR>
@@ -71,8 +82,8 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
+Plug 'syntastic/syntastic'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -83,6 +94,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'vim-buftabline/vim-buftabline'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
@@ -149,7 +161,7 @@ set smartcase
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch
+" set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -174,7 +186,7 @@ if &term =~ '256color'
 endif
 
 " Force redraw
-map <silent> <leader>r :redraw!<CR>
+map <silent> <leader>r :source $MYVIMRC<CR>:redraw!<CR>
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -260,13 +272,6 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 " Show undo tree
 nmap <silent> <leader>u :MundoToggle<CR>
 
-" Fuzzy find files
-nnoremap <silent> <Leader><space> :CtrlP<CR>
-let g:ctrlp_max_files=0
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
-
-" }}}
 
 " Text, tab and indent related {{{
 
@@ -313,10 +318,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 nnoremap j gj
 nnoremap k gk
 
-noremap <c-h> <c-w>h
-noremap <c-k> <c-w>k
-noremap <c-j> <c-w>j
-noremap <c-l> <c-w>l
 
 " Disable highlight when <leader><cr> is pressed
 " but preserve cursor coloring
@@ -333,11 +334,59 @@ augroup END
 " Remember info about open buffers on close
 set viminfo^=%
 
-" Open window splits in various places
-nmap <leader>sh :leftabove  vnew<CR>
-nmap <leader>sl :rightbelow vnew<CR>
-nmap <leader>sk :leftabove  new<CR>
-nmap <leader>sj :rightbelow new<CR>
+" close vim
+nmap <leader>q :bufdo bw!<CR>:q<CR>
+
+" Fuzzy find files
+nnoremap <silent> <Leader>oo :CtrlP<CR>
+let g:ctrlp_max_files=0
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+" }}}
+noremap <c-h> <c-w>h
+noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-l> <c-w>l
+inoremap <c-h> <c-o><c-w>h
+inoremap <c-j> <c-o><c-w>j
+inoremap <c-k> <c-o><c-w>k
+inoremap <c-l> <c-o><c-w>l
+
+" Open various kinds of window splits in each direction
+" new, copy, move, terminal, open
+nmap <leader>nh :leftabove  vnew<CR>
+nmap <leader>ch :leftabove  vsplit<CR>
+nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
+nmap <leader>th :leftabove  vsplit<CR>:terminal<CR>
+nmap <leader>oh :leftabove  vsplit<CR><leader>oo
+
+nmap <leader>nl :rightbelow vnew<CR>
+nmap <leader>cl :rightbelow vsplit<CR>
+nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
+nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR>
+nmap <leader>ol :rightbelow vsplit<CR><leader>oo
+
+nmap <leader>nk :leftabove  new<CR>
+nmap <leader>ck :leftabove  split<CR>
+nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
+nmap <leader>tk :leftabove  split<CR>:terminal<CR>
+nmap <leader>ok :leftabove  split<CR><leader>oo
+
+nmap <leader>nj :rightbelow new<CR>
+nmap <leader>cj :rightbelow split<CR>
+nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
+nmap <leader>tj :rightbelow split<CR>:terminal<CR>
+nmap <leader>oj :rightbelow split<CR><leader>oo
+
+
+" Use <Esc> to escape terminal insert mode
+tnoremap <Esc> <C-\><C-n>
+" Make terminal split moving behave like normal neovim
+tnoremap <c-h> <C-\><C-n><C-w>h
+tnoremap <c-j> <C-\><C-n><C-w>j
+tnoremap <c-k> <C-\><C-n><C-w>k
+tnoremap <c-l> <C-\><C-n><C-w>l
 
 " don't close buffers when you aren't displaying them
 set hidden
@@ -346,26 +395,16 @@ set hidden
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bn :bn<cr>
 
-" close every window in current tabview but the current
-nnoremap <leader>bo <c-w>o
+" maximise
+nnoremap <leader>bm <c-w>o
 
-" delete buffer without closing pane
+" close file
 noremap <leader>bd :Bd<cr>
+" close file and pane
+noremap <leader>bc :Bd<cr>:q<cr>
 
 " fuzzy find buffers
-noremap <leader>b<space> :CtrlPBuffer<cr>
-
-" Neovim terminal configurations
-if has('nvim')
-  " Use <Esc> to escape terminal insert mode
-  tnoremap <Esc> <C-\><C-n>
-  " Make terminal split moving behave like normal neovim
-  tnoremap <c-h> <C-\><C-n><C-w>h
-  tnoremap <c-j> <C-\><C-n><C-w>j
-  tnoremap <c-k> <C-\><C-n><C-w>k
-  tnoremap <c-l> <C-\><C-n><C-w>l
-endif
-
+noremap <leader><space> :CtrlPBuffer<cr>
 
 " }}}
 
@@ -384,13 +423,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-
-" }}}
-
-" Spell checking {{{
-
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
 
 " }}}
 

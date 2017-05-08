@@ -105,6 +105,8 @@ augroup END
 " }}}
 
 "Completion, Syntax check, Lint & Refactor {{{
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 nnoremap <silent> <leader><CR> :noh<CR>:GhcModTypeClear<CR>
 augroup haskell
@@ -113,12 +115,8 @@ augroup haskell
 augroup END
 
 " Provide (neco-ghc) omnicompletion
-if has("gui_running")
-  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-else " no gui
-  if has("unix")
-    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-  endif
+if has("unix")
+  inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
 endif
 
 " Disable hlint-refactor-vim's default keybindings
@@ -139,6 +137,7 @@ nmap <silent> <leader>ht :GhcModType<CR>
 nmap <silent> <leader>hT :GhcModTypeInsert<CR>
 " GHC errors and warnings
 nmap <silent> <leader>hc :w<CR>:Neomake ghcmod<CR>
+nmap <silent> <leader>he <leader>hc<C-j><CR>
 
 " open the neomake error window automatically when an error is found
 let g:neomake_open_list = 2
@@ -159,19 +158,5 @@ nmap <silent> <leader>hl :Neomake hlint<CR>
 
 " Options for Haskell Syntax Check
 let g:neomake_haskell_ghc_mod_args = '-g-Wall'
-
-" }}}
-
-" Point Conversion {{{
-
-function! Pointfree()
-  call setline('.', split(system('pointfree '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
-endfunction
-vnoremap <silent> <leader>h. :call Pointfree()<CR>
-
-function! Pointful()
-  call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
-endfunction
-vnoremap <silent> <leader>h> :call Pointful()<CR>
 
 " }}}
