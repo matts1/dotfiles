@@ -23,13 +23,6 @@ set foldnestmax=5
 set foldlevelstart=99
 set foldcolumn=0
 
-augroup vimrcFold
-  " fold vimrc itself by categories
-  autocmd!
-  autocmd FileType vim set foldmethod=marker
-  autocmd FileType vim set foldlevel=0
-augroup END
-
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -83,7 +76,7 @@ Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
-Plug 'syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -94,7 +87,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'vim-buftabline/vim-buftabline'
+Plug 'ap/vim-buftabline'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
@@ -104,6 +97,9 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Debuggers
+Plug 'critiqjo/lldb.nvim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -558,3 +554,8 @@ set completeopt+=longest
 let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
 
 " }}}
+
+" Unmap
+autocmd VimEnter * unmap <leader>rwp
+autocmd VimEnter * unmap <leader>swp
+
