@@ -138,6 +138,7 @@ nmap <silent> <leader>hT :GhcModTypeInsert<CR>
 " GHC errors and warnings
 nmap <silent> <leader>hc :w<CR>:Neomake ghcmod<CR>
 nmap <silent> <leader>he <leader>hc<C-j><CR>
+nmap <silent> <leader>hr <space>output<CR>
 
 " open the neomake error window automatically when an error is found
 let g:neomake_open_list = 2

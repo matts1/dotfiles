@@ -185,9 +185,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" Force redraw
-map <silent> <leader>r :source $MYVIMRC<CR>:redraw!<CR>
-
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
@@ -344,14 +341,14 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
 " }}}
-noremap <c-h> <c-w>h
-noremap <c-k> <c-w>k
-noremap <c-j> <c-w>j
-noremap <c-l> <c-w>l
-inoremap <c-h> <c-o><c-w>h
-inoremap <c-j> <c-o><c-w>j
-inoremap <c-k> <c-o><c-w>k
-inoremap <c-l> <c-o><c-w>l
+noremap <c-h> :update<cr><c-w>h
+noremap <c-k> :update<cr><c-w>k
+noremap <c-j> :update<cr><c-w>j
+noremap <c-l> :update<cr><c-w>l
+inoremap <c-h> <c-o>:update<cr><c-o><c-w>h
+inoremap <c-j> <c-o>:update<cr><c-o><c-w>j
+inoremap <c-k> <c-o>:update<cr><c-o><c-w>k
+inoremap <c-l> <c-o>:update<cr><c-o><c-w>l
 
 " Open various kinds of window splits in each direction
 " new, copy, move, terminal, open
@@ -359,26 +356,31 @@ nmap <leader>nh :leftabove  vnew<CR>
 nmap <leader>ch :leftabove  vsplit<CR>
 nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
 nmap <leader>th :leftabove  vsplit<CR>:terminal<CR>
+nmap <leader>rh :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>
 nmap <leader>oh :leftabove  vsplit<CR><leader>oo
 
 nmap <leader>nl :rightbelow vnew<CR>
 nmap <leader>cl :rightbelow vsplit<CR>
 nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
 nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR>
+nmap <leader>rl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>
 nmap <leader>ol :rightbelow vsplit<CR><leader>oo
 
 nmap <leader>nk :leftabove  new<CR>
 nmap <leader>ck :leftabove  split<CR>
 nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
 nmap <leader>tk :leftabove  split<CR>:terminal<CR>
+nmap <leader>rk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>
 nmap <leader>ok :leftabove  split<CR><leader>oo
 
 nmap <leader>nj :rightbelow new<CR>
 nmap <leader>cj :rightbelow split<CR>
 nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
 nmap <leader>tj :rightbelow split<CR>:terminal<CR>
+nmap <leader>rj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>
 nmap <leader>oj :rightbelow split<CR><leader>oo
 
+nmap <silent> <leader>rr <space>output<CR>i<UP><CR><ESC><space><CR>
 
 " Use <Esc> to escape terminal insert mode
 tnoremap <Esc> <C-\><C-n>
@@ -391,6 +393,9 @@ tnoremap <c-l> <C-\><C-n><C-w>l
 " don't close buffers when you aren't displaying them
 set hidden
 
+" don't close terminal buffers when you aren't displaying them
+autocmd TermOpen * set bufhidden=hide
+
 " previous buffer, next buffer
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bn :bn<cr>
@@ -399,12 +404,12 @@ nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bm <c-w>o
 
 " close file
-noremap <leader>bd :Bd<cr>
+noremap <leader>bd :Bd!<cr>
 " close file and pane
-noremap <leader>bc :Bd<cr>:q<cr>
+noremap <leader>bc :q<cr>
 
 " fuzzy find buffers
-noremap <leader><space> :CtrlPBuffer<cr>
+noremap <space> :CtrlPBuffer<cr>
 
 " }}}
 
@@ -459,9 +464,10 @@ endfunction
 
 " Slime {{{
 
-vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
-nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
-nmap <silent> <Leader>rv <Plug>SetTmuxVars
+" May want this later
+" vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
+" nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
+" nmap <silent> <Leader>rv <Plug>SetTmuxVars
 
 " }}}
 
