@@ -355,32 +355,28 @@ inoremap <c-l> <c-o>:update<cr><c-o><c-w>l
 nmap <leader>nh :leftabove  vnew<CR>
 nmap <leader>ch :leftabove  vsplit<CR>
 nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
-nmap <leader>th :leftabove  vsplit<CR>:terminal<CR>
-nmap <leader>rh :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>
+nmap <leader>th :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oh :leftabove  vsplit<CR><leader>oo
 
 nmap <leader>nl :rightbelow vnew<CR>
 nmap <leader>cl :rightbelow vsplit<CR>
 nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
-nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR>
-nmap <leader>rl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>
+nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ol :rightbelow vsplit<CR><leader>oo
 
 nmap <leader>nk :leftabove  new<CR>
 nmap <leader>ck :leftabove  split<CR>
 nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
-nmap <leader>tk :leftabove  split<CR>:terminal<CR>
-nmap <leader>rk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>
+nmap <leader>tk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ok :leftabove  split<CR><leader>oo
 
 nmap <leader>nj :rightbelow new<CR>
 nmap <leader>cj :rightbelow split<CR>
 nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
-nmap <leader>tj :rightbelow split<CR>:terminal<CR>
-nmap <leader>rj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>
+nmap <leader>tj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oj :rightbelow split<CR><leader>oo
 
-nmap <silent> <leader>rr <space>output<CR>i<UP><CR><ESC><space><CR>
+nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
 
 " Use <Esc> to escape terminal insert mode
 tnoremap <Esc> <C-\><C-n>
