@@ -16,5 +16,6 @@ cabal install quickcheck
 cabal install happy
 cabal install ghc-mod
 cabal install codex
+sudo apt remove cabal-install
 
 sudo apt install hasktags
