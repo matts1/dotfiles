@@ -6,9 +6,14 @@ sudo apt install neovim
 
 sudo apt install git zsh unity-tweak-tool thefuck
 
+sudo apt install lldb
+sudo pip2 install neovim
+sudo pip3 install neovim
+
 sudo apt install python2-dev python2-pip
 sudo apt install python3-dev python3-pip
 pip3 install --user thefuck
+sudo pip install pyclewn
 
 sudo apt install cabal-install hoogle hlint dconf-tools
 cabal update
@@ -16,5 +21,6 @@ cabal install quickcheck
 cabal install happy
 cabal install ghc-mod
 cabal install codex
+sudo apt remove cabal-install
 
 sudo apt install hasktags

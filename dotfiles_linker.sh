@@ -13,9 +13,10 @@ do
       echo "File $f already exists and is not a symlink"
       exit 1
     fi
-    ln -s "$(pwd)/$f" "$result"
+    ln -f -s "$(pwd)/$f" "$result"
   fi
 done
 
-ln -s "$(pwd)/nvim" ~/.config/nvim
-ln -s "$(pwd)/.profile" /home/matt/.zprofile
+ln -f -s "$(pwd)/nvim" ~/.config/nvim
+rm -f ~/.config/nvim/nvim
+ln -f -s "$(pwd)/.profile" /home/matt/.zprofile

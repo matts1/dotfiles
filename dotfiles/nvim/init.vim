@@ -76,7 +76,7 @@ Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
-Plug 'syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -87,7 +87,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'vim-buftabline/vim-buftabline'
+Plug 'ap/vim-buftabline'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
@@ -97,6 +97,9 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Debuggers
+Plug 'critiqjo/lldb.nvim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -576,3 +579,8 @@ set completeopt+=longest
 let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
 
 " }}}
+
+" Unmap
+autocmd VimEnter * unmap <leader>rwp
+autocmd VimEnter * unmap <leader>swp
+
