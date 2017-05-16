@@ -23,13 +23,6 @@ set foldnestmax=5
 set foldlevelstart=99
 set foldcolumn=0
 
-augroup vimrcFold
-  " fold vimrc itself by categories
-  autocmd!
-  autocmd FileType vim set foldmethod=marker
-  autocmd FileType vim set foldlevel=0
-augroup END
-
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -234,9 +227,6 @@ endif
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" Use large font by default in MacVim
-set gfn=Monaco:h19
-
 " Use powerline fonts for airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -255,12 +245,12 @@ set noswapfile
 
 " Source the vimrc file after saving it
 augroup sourcing
-  autocmd!
-  if has('nvim')
-    autocmd bufwritepost init.vim source $MYVIMRC
-  else
-    autocmd bufwritepost .vimrc source $MYVIMRC
-  endif
+    autocmd!
+    if has('nvim')
+        autocmd bufwritepost init.vim source $MYVIMRC
+    else
+        autocmd bufwritepost .vimrc source $MYVIMRC
+    endif
 augroup END
 
 " Open file prompt with current path
@@ -269,6 +259,7 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 " Show undo tree
 nmap <silent> <leader>u :MundoToggle<CR>
 
+nnoremap U :redo<CR>
 
 " Text, tab and indent related {{{
 
@@ -322,11 +313,11 @@ nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 
 " Return to last edit position when opening files (You want this!)
 augroup last_edit
-  autocmd!
-  autocmd BufReadPost *
-       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-       \   exe "normal! g`\"" |
-       \ endif
+    autocmd!
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
 augroup END
 " Remember info about open buffers on close
 set viminfo^=%
@@ -335,56 +326,92 @@ set viminfo^=%
 nmap <leader>q :bufdo bw!<CR>:q<CR>
 
 " Fuzzy find files
-nnoremap <silent> <Leader>oo :CtrlP<CR>
 let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work|.idea)$' }
 
 " }}}
-noremap <c-h> :update<cr><c-w>h
-noremap <c-k> :update<cr><c-w>k
-noremap <c-j> :update<cr><c-w>j
-noremap <c-l> :update<cr><c-w>l
-inoremap <c-h> <c-o>:update<cr><c-o><c-w>h
-inoremap <c-j> <c-o>:update<cr><c-o><c-w>j
-inoremap <c-k> <c-o>:update<cr><c-o><c-w>k
-inoremap <c-l> <c-o>:update<cr><c-o><c-w>l
+
+" Save on switching to normal mode
+inoremap <silent> <ESC> <ESC>:update<CR>
+inoremap <silent> <C-o> <C-o>:update<CR><C-o>
+
+function! InsertTerminal()
+    if filereadable(expand(":%p")) == 0
+        execute "normal! i"
+    endif
+endfunction
+
+" Use <Esc> to escape terminal insert mode
+tnoremap <Esc> <C-\><C-n>
+" Make terminal split moving behave like normal neovim
+" tnoremap <c-h> <C-\><C-n><C-w>h<C-o>:call InsertTerminal()<CR>
+" tnoremap <c-j> <C-\><C-n><C-w>j<C-o>:call InsertTerminal()<CR>
+" tnoremap <c-k> <C-\><C-n><C-w>k<C-o>:call InsertTerminal()<CR>
+" tnoremap <c-l> <C-\><C-n><C-w>l<C-o>:call InsertTerminal()<CR>
+
+" noremap <c-h> <c-w>h<C-o>:call InsertTerminal()<CR>
+" noremap <c-j> <c-w>j<C-o>:call InsertTerminal()<CR>
+" noremap <c-k> <c-w>k<C-o>:call InsertTerminal()<CR>
+" noremap <c-l> <c-w>l<C-o>:call InsertTerminal()<CR>
+" inoremap <c-h> <c-o><c-h><C-o>:call InsertTerminal()<CR>
+" inoremap <c-j> <c-o><c-j><C-o>:call InsertTerminal()<CR>
+" inoremap <c-k> <c-o><c-k><C-o>:call InsertTerminal()<CR>
+" inoremap <c-l> <c-o><c-l><C-o>:call InsertTerminal()<CR>
+
+tnoremap <c-h> <C-\><C-n><C-w>h
+tnoremap <c-j> <C-\><C-n><C-w>j
+tnoremap <c-k> <C-\><C-n><C-w>k
+tnoremap <c-l> <C-\><C-n><C-w>l
+
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+inoremap <c-h> <c-o><c-h>
+inoremap <c-j> <c-o><c-j>
+inoremap <c-k> <c-o><c-k>
+inoremap <c-l> <c-o><c-l>
+
+nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
 
 " Open various kinds of window splits in each direction
 " new, copy, move, terminal, open
 nmap <leader>nh :leftabove  vnew<CR>
 nmap <leader>ch :leftabove  vsplit<CR>
 nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
+" nmap <leader>th :leftabove  vsplit<CR><leader>tt
 nmap <leader>th :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oh :leftabove  vsplit<CR><leader>oo
 
 nmap <leader>nl :rightbelow vnew<CR>
 nmap <leader>cl :rightbelow vsplit<CR>
 nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
+" nmap <leader>tl :rightbelow vsplit<CR><leader>tt
 nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ol :rightbelow vsplit<CR><leader>oo
 
 nmap <leader>nk :leftabove  new<CR>
 nmap <leader>ck :leftabove  split<CR>
 nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
+" nmap <leader>tk :leftabove  split<CR><leader>tt
 nmap <leader>tk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ok :leftabove  split<CR><leader>oo
 
 nmap <leader>nj :rightbelow new<CR>
 nmap <leader>cj :rightbelow split<CR>
 nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
+" nmap <leader>tj :rightbelow split<CR><leader>tt
 nmap <leader>tj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oj :rightbelow split<CR><leader>oo
 
-nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
+nnoremap <silent> <leader>nn :e<CR>
+noremap <leader>tt :terminal<CR><ESC>
+" :file output<CR>
+nnoremap <leader>oo :CtrlP<CR>
 
-" Use <Esc> to escape terminal insert mode
-tnoremap <Esc> <C-\><C-n>
-" Make terminal split moving behave like normal neovim
-tnoremap <c-h> <C-\><C-n><C-w>h
-tnoremap <c-j> <C-\><C-n><C-w>j
-tnoremap <c-k> <C-\><C-n><C-w>k
-tnoremap <c-l> <C-\><C-n><C-w>l
+
+map <C-space> za
 
 " don't close buffers when you aren't displaying them
 set hidden
@@ -458,15 +485,6 @@ endfunction
 
 " }}}
 
-" Slime {{{
-
-" May want this later
-" vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
-" nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
-" nmap <silent> <Leader>rv <Plug>SetTmuxVars
-
-" }}}
-
 " NERDTree {{{
 
 " Close nerdtree after a file is selected
@@ -506,7 +524,7 @@ map <leader>ap :Align
 
 " Tags {{{
 
-map <leader>tt :TagbarToggle<CR>
+" map <leader>tt :TagbarToggle<CR>
 
 set tags=tags;/
 set cst
