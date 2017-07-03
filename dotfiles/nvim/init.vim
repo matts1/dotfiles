@@ -99,7 +99,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Debuggers
-Plug 'critiqjo/lldb.nvim'
+Plug 'idanarye/vim-vebugger'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -132,6 +132,7 @@ set wildmode=list:longest,full
 " Always show current position
 set ruler
 set number
+set relativenumber
 
 " Show trailing whitespace
 set list
@@ -256,9 +257,6 @@ augroup sourcing
     endif
 augroup END
 
-" Open file prompt with current path
-nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-
 " Show undo tree
 nmap <silent> <leader>u :MundoToggle<CR>
 
@@ -287,8 +285,6 @@ set wrap "Wrap lines
 " Copy and paste to os clipboard
 nmap <leader>y "*y
 vmap <leader>y "*y
-nmap <leader>d "*d
-vmap <leader>d "*d
 nmap <leader>p "*p
 vmap <leader>p "*p
 
@@ -362,57 +358,95 @@ tnoremap <Esc> <C-\><C-n>
 " inoremap <c-k> <c-o><c-k><C-o>:call InsertTerminal()<CR>
 " inoremap <c-l> <c-o><c-l><C-o>:call InsertTerminal()<CR>
 
-tnoremap <c-h> <C-\><C-n><C-w>h
-tnoremap <c-j> <C-\><C-n><C-w>j
-tnoremap <c-k> <C-\><C-n><C-w>k
-tnoremap <c-l> <C-\><C-n><C-w>l
+tmap <c-h> <ESC><C-w>h
+tmap <c-j> <ESC><C-w>j
+tmap <c-k> <ESC><C-w>k
+tmap <c-l> <ESC><C-w>l
 
-noremap <c-h> <c-w>h
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-inoremap <c-h> <c-o><c-h>
-inoremap <c-j> <c-o><c-j>
-inoremap <c-k> <c-o><c-k>
-inoremap <c-l> <c-o><c-l>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+imap <c-h> <c-o><c-h>
+imap <c-j> <c-o><c-j>
+imap <c-k> <c-o><c-k>
+imap <c-l> <c-o><c-l>
 
 nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
+imap <leader>r <ESC>:w<space>output<CR>i<UP><CR><ESC><space><CR>i
 
 " Open various kinds of window splits in each direction
 " new, copy, move, terminal, open
 nmap <leader>nh :leftabove  vnew<CR>
+imap <leader>nh <ESC>:leftabove  vnew<CR>i
 nmap <leader>ch :leftabove  vsplit<CR>
+imap <leader>ch <ESC>:leftabove  vsplit<CR>
 nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
-" nmap <leader>th :leftabove  vsplit<CR><leader>tt
+imap <leader>mh <ESC>:leftabove  vsplit<CR><C-l>:bp<CR><C-h>a
 nmap <leader>th :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
+imap <leader>th <ESC>:leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oh :leftabove  vsplit<CR><leader>oo
+imap <leader>oh <ESC>:leftabove  vsplit<CR><leader>oo
 
 nmap <leader>nl :rightbelow vnew<CR>
+imap <leader>nl <ESC>:rightbelow vnew<CR>i
 nmap <leader>cl :rightbelow vsplit<CR>
+imap <leader>cl <ESC>:rightbelow vsplit<CR>i
 nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
-" nmap <leader>tl :rightbelow vsplit<CR><leader>tt
+imap <leader>ml <ESC>:rightbelow vsplit<CR><C-h>:bp<CR><C-l>i
 nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
+imap <leader>tl <ESC>:rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ol :rightbelow vsplit<CR><leader>oo
+imap <leader>ol <ESC>:rightbelow vsplit<CR><leader>ooi
 
 nmap <leader>nk :leftabove  new<CR>
+imap <leader>nk <ESC>:leftabove  new<CR>i
 nmap <leader>ck :leftabove  split<CR>
+imap <leader>ck <ESC>:leftabove  split<CR>i
 nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
-" nmap <leader>tk :leftabove  split<CR><leader>tt
+imap <leader>mk <ESC>:leftabove  split<CR><C-j>:bp<CR><C-k>i
 nmap <leader>tk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
+imap <leader>tk <ESC>:leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>ok :leftabove  split<CR><leader>oo
+imap <leader>ok <ESC>:leftabove  split<CR><leader>ooi
 
 nmap <leader>nj :rightbelow new<CR>
+imap <leader>nj <ESC>:rightbelow new<CR>i
 nmap <leader>cj :rightbelow split<CR>
+imap <leader>cj <ESC>:rightbelow split<CR>i
 nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
-" nmap <leader>tj :rightbelow split<CR><leader>tt
+imap <leader>mj <ESC>:rightbelow split<CR><C-k>:bp<CR><C-j>i
 nmap <leader>tj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
+imap <leader>tj <ESC>:rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
 nmap <leader>oj :rightbelow split<CR><leader>oo
+imap <leader>oj <ESC>:rightbelow split<CR><leader>oo
 
 nnoremap <silent> <leader>nn :e<CR>
-noremap <leader>tt :terminal<CR><ESC>
-" :file output<CR>
+inoremap <silent> <C-o><leader>nn :e<CR>
+nnoremap <leader>tt :terminal<CR><ESC>:file output<CR>
+inoremap <leader>tt <ESC>:terminal<CR><ESC>:file output<CR>
 nnoremap <leader>oo :CtrlP<CR>
+inoremap <leader>oo <ESC>:CtrlP<CR>
 
+" Debugger
+nmap <leader>i :VBGcontinue<CR>
+imap <leader>i <C-o>:VBGcontinue<CR>
+nmap <leader>l :VBGtoggleBreakpointThisLine<CR>
+imap <leader>l <C-o>:VBGtoggleBreakpointThisLine<CR>
+nmap <leader>si :VBGstepIn<CR>
+imap <leader>si <C-o>:VBGstepIn<CR>
+nmap <leader>so :VBGstepOut<CR>
+imap <leader>so <C-o>:VBGstepOut<CR>
+nmap <leader>h :VBGstepOver<CR>
+imap <leader>h <C-o>:VBGstepOver<CR>
+nmap <leader>e :VBGeval 
+imap <leader>e <C-o>:VBGeval 
+vmap <leader>e :VBGevalSelectedText<CR>
+nmap <leader>x :VBGexecute 
+imap <leader>x <C-o>:VBGexecute 
+vmap <leader>x :VBGexecuteSelectedText<CR>
+nmap <leader>w :VBGrawWrite 
+imap <leader>w <C-o>:VBGrawWrite 
 
 map <C-space> za
 
