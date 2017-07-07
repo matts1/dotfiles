@@ -371,32 +371,31 @@ inoremap <c-j> <c-o>:update<CR><c-o><c-j>
 inoremap <c-k> <c-o>:update<CR><c-o><c-k>
 inoremap <c-l> <c-o>:update<CR><c-o><c-l>
 
-nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
-imap <leader>r <ESC>:w<space>output<CR>i<UP><CR><ESC><space><CR>i
+call MapEsc('<leader>r', '<space>output<CR>i<UP><CR><ESC><space><CR>')
 
 " Open various kinds of window splits in each direction
 " new, copy, move, terminal, open
 call MapEsc('<leader>nh', ':leftabove  vnew<CR>')
 call MapEsc('<leader>ch', ':leftabove  vsplit<CR>')
-call MapEsc('<leader>mh', ':leftabove  vsplit<CR><C-l>:bp<CR><C-h>')
+call MapEsc('<leader>mh', ':leftabove  vsplit<CR><C-l>:bh<CR><C-h>')
 call MapEsc('<leader>th', ':leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i')
 call MapEsc('<leader>oh', ':leftabove  vsplit<CR><leader>oo')
 
 call MapEsc('<leader>nl', ':rightbelow vnew<CR>')
 call MapEsc('<leader>cl', ':rightbelow vsplit<CR>')
-call MapEsc('<leader>ml', ':rightbelow vsplit<CR><C-h>:bp<CR><C-l>')
+call MapEsc('<leader>ml', ':rightbelow vsplit<CR><C-h>:bh<CR><C-l>')
 call MapEsc('<leader>tl', ':rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i')
 call MapEsc('<leader>ol', ':rightbelow vsplit<CR><leader>oo')
 
 call MapEsc('<leader>nk', ':leftabove  new<CR>')
 call MapEsc('<leader>ck', ':leftabove  split<CR>')
-call MapEsc('<leader>mk', ':leftabove  split<CR><C-j>:bp<CR><C-k>')
+call MapEsc('<leader>mk', ':leftabove  split<CR><C-j>:bh<CR><C-k>')
 call MapEsc('<leader>tk', ':leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i')
 call MapEsc('<leader>ok', ':leftabove  split<CR><leader>oo')
 
 call MapEsc('<leader>nj', ':rightbelow new<CR>')
 call MapEsc('<leader>cj', ':rightbelow split<CR>')
-call MapEsc('<leader>mj', ':rightbelow split<CR><C-k>:bp<CR><C-j>')
+call MapEsc('<leader>mj', ':rightbelow split<CR><C-k>:bh<CR><C-j>')
 call MapEsc('<leader>tj', ':rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i')
 call MapEsc('<leader>oj', ':rightbelow split<CR><leader>oo')
 
@@ -428,10 +427,11 @@ set hidden
 
 " don't close terminal buffers when you aren't displaying them
 autocmd TermOpen * set bufhidden=hide
+autocmd VimLeave * !~/.config/nvim/onvimexit
 
 " previous buffer, next buffer
-call MapCO('<leader>bp', ':bp')
-call MapCO('<leader>bn', ':bn')
+call MapCO('<leader>bh', ':bp')
+call MapCO('<leader>bl', ':bn')
 
 " maximise
 call MapCO('<leader>bm', '<c-w>o')
