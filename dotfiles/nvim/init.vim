@@ -1,7 +1,19 @@
+function! MapEsc(keys, rhs)
+    execute 'nmap' a:keys ':update<CR>' . a:rhs
+    execute 'vmap' a:keys ':update<CR>' . a:rhs
+    execute 'imap' a:keys '<ESC>' . a:rhs . 'i'
+    execute 'tmap' a:keys '<ESC>' . a:rhs . 'i'
+endfunction
+
+function! MapCO(keys, rhs)
+    execute 'nmap' a:keys ':update<CR>' . a:rhs . '<CR>'
+    execute 'vmap' a:keys ':update<CR>' . a:rhs . '<CR>'
+    execute 'imap' a:keys '<C-o>' . a:rhs . '<CR>'
+    execute 'tmap' a:keys '<ESC>' . a:rhs . '<CR>i'
+endfunction
+
 " zsh
 set shell=zsh
-
-map <Leader>s :SyntasticToggleMode<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -12,9 +24,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-vnoremap <c-_> :Commentary<CR>
-nnoremap <c-_> :Commentary<CR>
-inoremap <c-_> <c-o>:Commentary<CR>
+call MapCO('<c-_>', ':Commentary')
 
 " General {{{
 " Use indentation for folds
@@ -77,6 +87,7 @@ Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
 Plug 'vim-syntastic/syntastic'
+Plug 'mhinz/vim-startify'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -258,7 +269,7 @@ augroup sourcing
 augroup END
 
 " Show undo tree
-nmap <silent> <leader>u :MundoToggle<CR>
+call MapCO('<leader>u', ':MundoToggle')
 
 nnoremap U :redo<CR>
 
@@ -283,10 +294,8 @@ set si "Smart indent
 set wrap "Wrap lines
 
 " Copy and paste to os clipboard
-nmap <leader>y "*y
-vmap <leader>y "*y
-nmap <leader>p "*p
-vmap <leader>p "*p
+call MapEsc('<leader>y', '"*y')
+call MapEsc('<leader>p', '"*p')
 
 " }}}
 
@@ -322,7 +331,7 @@ augroup END
 set viminfo^=%
 
 " close vim
-nmap <leader>q :bufdo bw!<CR>:q<CR>
+call MapEsc('<leader>q', ':wa<CR>:redir => pwd<CR>:pwd<CR>:redir END<CR>:execute ":SSave " . substitute(substitute(pwd, "\n", "", "g"), "/", "+", "g")<CR>y<ESC>:qa<CR>')
 
 " Fuzzy find files
 let g:ctrlp_max_files=0
@@ -335,6 +344,11 @@ let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work|.id
 inoremap <silent> <ESC> <ESC>:update<CR>
 inoremap <silent> <C-o> <C-o>:update<CR><C-o>
 
+let g:startify_session_dir = '~/.config/vim-session'
+let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks']
+let g:startify_session_autoload = 1
+let g:startify_session_persistence = 1
+
 function! InsertTerminal()
     if filereadable(expand(":%p")) == 0
         execute "normal! i"
@@ -343,102 +357,60 @@ endfunction
 
 " Use <Esc> to escape terminal insert mode
 tnoremap <Esc> <C-\><C-n>
-" Make terminal split moving behave like normal neovim
-" tnoremap <c-h> <C-\><C-n><C-w>h<C-o>:call InsertTerminal()<CR>
-" tnoremap <c-j> <C-\><C-n><C-w>j<C-o>:call InsertTerminal()<CR>
-" tnoremap <c-k> <C-\><C-n><C-w>k<C-o>:call InsertTerminal()<CR>
-" tnoremap <c-l> <C-\><C-n><C-w>l<C-o>:call InsertTerminal()<CR>
-
-" noremap <c-h> <c-w>h<C-o>:call InsertTerminal()<CR>
-" noremap <c-j> <c-w>j<C-o>:call InsertTerminal()<CR>
-" noremap <c-k> <c-w>k<C-o>:call InsertTerminal()<CR>
-" noremap <c-l> <c-w>l<C-o>:call InsertTerminal()<CR>
-" inoremap <c-h> <c-o><c-h><C-o>:call InsertTerminal()<CR>
-" inoremap <c-j> <c-o><c-j><C-o>:call InsertTerminal()<CR>
-" inoremap <c-k> <c-o><c-k><C-o>:call InsertTerminal()<CR>
-" inoremap <c-l> <c-o><c-l><C-o>:call InsertTerminal()<CR>
-
 tmap <c-h> <ESC><C-w>h
 tmap <c-j> <ESC><C-w>j
 tmap <c-k> <ESC><C-w>k
 tmap <c-l> <ESC><C-w>l
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-imap <c-h> <c-o><c-h>
-imap <c-j> <c-o><c-j>
-imap <c-k> <c-o><c-k>
-imap <c-l> <c-o><c-l>
+nnoremap <c-h> :update<CR><c-w>h
+nnoremap <c-j> :update<CR><c-w>j
+nnoremap <c-k> :update<CR><c-w>k
+nnoremap <c-l> :update<CR><c-w>l
+inoremap <c-h> <c-o>:update<CR><c-o><c-h>
+inoremap <c-j> <c-o>:update<CR><c-o><c-j>
+inoremap <c-k> <c-o>:update<CR><c-o><c-k>
+inoremap <c-l> <c-o>:update<CR><c-o><c-l>
 
-nmap <leader>r <space>output<CR>i<UP><CR><ESC><space><CR>
-imap <leader>r <ESC>:w<space>output<CR>i<UP><CR><ESC><space><CR>i
+call MapEsc('<leader>r', '<space>output<CR>i<UP><CR><ESC><space><CR>')
 
 " Open various kinds of window splits in each direction
 " new, copy, move, terminal, open
-nmap <leader>nh :leftabove  vnew<CR>
-imap <leader>nh <ESC>:leftabove  vnew<CR>i
-nmap <leader>ch :leftabove  vsplit<CR>
-imap <leader>ch <ESC>:leftabove  vsplit<CR>
-nmap <leader>mh :leftabove  vsplit<CR><C-l>:bp<CR><C-h>
-imap <leader>mh <ESC>:leftabove  vsplit<CR><C-l>:bp<CR><C-h>a
-nmap <leader>th :leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
-imap <leader>th <ESC>:leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i
-nmap <leader>oh :leftabove  vsplit<CR><leader>oo
-imap <leader>oh <ESC>:leftabove  vsplit<CR><leader>oo
+call MapEsc('<leader>nh', ':leftabove  vnew<CR>')
+call MapEsc('<leader>ch', ':leftabove  vsplit<CR>')
+call MapEsc('<leader>mh', ':leftabove  vsplit<CR><C-l>:bh<CR><C-h>')
+call MapEsc('<leader>th', ':leftabove  vsplit<CR>:terminal<CR><ESC>:file output<CR>i')
+call MapEsc('<leader>oh', ':leftabove  vsplit<CR><leader>oo')
 
-nmap <leader>nl :rightbelow vnew<CR>
-imap <leader>nl <ESC>:rightbelow vnew<CR>i
-nmap <leader>cl :rightbelow vsplit<CR>
-imap <leader>cl <ESC>:rightbelow vsplit<CR>i
-nmap <leader>ml :rightbelow vsplit<CR><C-h>:bp<CR><C-l>
-imap <leader>ml <ESC>:rightbelow vsplit<CR><C-h>:bp<CR><C-l>i
-nmap <leader>tl :rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
-imap <leader>tl <ESC>:rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i
-nmap <leader>ol :rightbelow vsplit<CR><leader>oo
-imap <leader>ol <ESC>:rightbelow vsplit<CR><leader>ooi
+call MapEsc('<leader>nl', ':rightbelow vnew<CR>')
+call MapEsc('<leader>cl', ':rightbelow vsplit<CR>')
+call MapEsc('<leader>ml', ':rightbelow vsplit<CR><C-h>:bh<CR><C-l>')
+call MapEsc('<leader>tl', ':rightbelow vsplit<CR>:terminal<CR><ESC>:file output<CR>i')
+call MapEsc('<leader>ol', ':rightbelow vsplit<CR><leader>oo')
 
-nmap <leader>nk :leftabove  new<CR>
-imap <leader>nk <ESC>:leftabove  new<CR>i
-nmap <leader>ck :leftabove  split<CR>
-imap <leader>ck <ESC>:leftabove  split<CR>i
-nmap <leader>mk :leftabove  split<CR><C-j>:bp<CR><C-k>
-imap <leader>mk <ESC>:leftabove  split<CR><C-j>:bp<CR><C-k>i
-nmap <leader>tk :leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
-imap <leader>tk <ESC>:leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i
-nmap <leader>ok :leftabove  split<CR><leader>oo
-imap <leader>ok <ESC>:leftabove  split<CR><leader>ooi
+call MapEsc('<leader>nk', ':leftabove  new<CR>')
+call MapEsc('<leader>ck', ':leftabove  split<CR>')
+call MapEsc('<leader>mk', ':leftabove  split<CR><C-j>:bh<CR><C-k>')
+call MapEsc('<leader>tk', ':leftabove  split<CR>:terminal<CR><ESC>:file output<CR>i')
+call MapEsc('<leader>ok', ':leftabove  split<CR><leader>oo')
 
-nmap <leader>nj :rightbelow new<CR>
-imap <leader>nj <ESC>:rightbelow new<CR>i
-nmap <leader>cj :rightbelow split<CR>
-imap <leader>cj <ESC>:rightbelow split<CR>i
-nmap <leader>mj :rightbelow split<CR><C-k>:bp<CR><C-j>
-imap <leader>mj <ESC>:rightbelow split<CR><C-k>:bp<CR><C-j>i
-nmap <leader>tj :rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
-imap <leader>tj <ESC>:rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i
-nmap <leader>oj :rightbelow split<CR><leader>oo
-imap <leader>oj <ESC>:rightbelow split<CR><leader>oo
+call MapEsc('<leader>nj', ':rightbelow new<CR>')
+call MapEsc('<leader>cj', ':rightbelow split<CR>')
+call MapEsc('<leader>mj', ':rightbelow split<CR><C-k>:bh<CR><C-j>')
+call MapEsc('<leader>tj', ':rightbelow split<CR>:terminal<CR><ESC>:file output<CR>i')
+call MapEsc('<leader>oj', ':rightbelow split<CR><leader>oo')
 
-nnoremap <silent> <leader>nn :e<CR>
-inoremap <silent> <C-o><leader>nn :e<CR>
-nnoremap <leader>tt :terminal<CR><ESC>:file output<CR>
-inoremap <leader>tt <ESC>:terminal<CR><ESC>:file output<CR>
+nmap <leader>nn :e 
+imap <leader>nn <C-o>:e 
+call MapEsc('<leader>tt', ':terminal<CR><ESC>:file output<CR>')
 nnoremap <leader>oo :CtrlP<CR>
 inoremap <leader>oo <ESC>:CtrlP<CR>
 
 " Debugger
-nmap <leader>i :VBGcontinue<CR>
-imap <leader>i <C-o>:VBGcontinue<CR>
-nmap <leader>l :VBGtoggleBreakpointThisLine<CR>
-imap <leader>l <C-o>:VBGtoggleBreakpointThisLine<CR>
-nmap <leader>si :VBGstepIn<CR>
-imap <leader>si <C-o>:VBGstepIn<CR>
-nmap <leader>so :VBGstepOut<CR>
-imap <leader>so <C-o>:VBGstepOut<CR>
-nmap <leader>h :VBGstepOver<CR>
-imap <leader>h <C-o>:VBGstepOver<CR>
+call MapCO('<leader>i', ':VBGcontinue')
+call MapCO('<leader>l', ':VBGtoggleBreakpointThisLine')
+call MapCO('<leader>si', ':VBGstepIn')
+call MapCO('<leader>so', ':VBGstepOut')
+call MapCO('<leader>h', ':VBGstepOver')
 nmap <leader>e :VBGeval 
 imap <leader>e <C-o>:VBGeval 
 vmap <leader>e :VBGevalSelectedText<CR>
@@ -455,18 +427,19 @@ set hidden
 
 " don't close terminal buffers when you aren't displaying them
 autocmd TermOpen * set bufhidden=hide
+autocmd VimLeave * !~/.config/nvim/onvimexit
 
 " previous buffer, next buffer
-nnoremap <leader>bp :bp<cr>
-nnoremap <leader>bn :bn<cr>
+call MapCO('<leader>bh', ':bp')
+call MapCO('<leader>bl', ':bn')
 
 " maximise
-nnoremap <leader>bm <c-w>o
+call MapCO('<leader>bm', '<c-w>o')
 
 " close file
-noremap <leader>bd :Bd!<cr>
+call MapCO('<leader>bd', ':Bd!')
 " close file and pane
-noremap <leader>bc :q<cr>
+call MapCO('<leader>bc', ':q')
 
 " fuzzy find buffers
 noremap <space> :CtrlPBuffer<cr>
@@ -540,8 +513,8 @@ function! ToggleFindNerd()
 endfunction
 
 " If nerd tree is closed, find current file, if open, close it
-nmap <silent> <leader>f <ESC>:call ToggleFindNerd()<CR>
-nmap <silent> <leader>F <ESC>:NERDTreeToggle<CR>
+call MapCO('<leader>f', ':call ToggleFindNerd()')
+call MapCO('<leader>F', ':NERDTreeToggle')
 
 " }}}
 
@@ -550,13 +523,15 @@ nmap <silent> <leader>F <ESC>:NERDTreeToggle<CR>
 " Stop Align plugin from forcing its mappings on us
 let g:loaded_AlignMapsPlugin=1
 " Align on equal signs
-map <Leader>a= :Align =<CR>
+call MapCO('<Leader>a=', ':Align =')
 " Align on commas
-map <Leader>a, :Align ,<CR>
+call MapCO('<Leader>a,', ':Align ,')
 " Align on pipes
-map <Leader>a<bar> :Align <bar><CR>
+call MapCO('<Leader>a<bar>', ':Align <bar>')
 " Prompt for align character
-map <leader>ap :Align
+nmap <leader>ap :Align 
+imap <leader>ap <c-o>:Align 
+
 " }}}
 
 " Tags {{{
@@ -582,11 +557,12 @@ function! NonintrusiveGitGrep(term)
 endfunction
 
 command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
-nmap <leader>gs :Gstatus<CR>
+call MapCO('<leader>gs', ':Gstatus<CR>')
 nmap <leader>gg :copen<CR>:GGrep 
-nmap <leader>gl :Extradite!<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gb :Gblame<CR>
+imap <leader>gg <c-o>:copen<CR><c-o>:GGrep 
+call MapCO('<leader>gl', ':Extradite!')
+call MapCO('<leader>gd', ':Gdiff')
+call MapCO('<leader>gb', ':Gblame')
 
 function! CommittedFiles()
   " Clear quickfix list
@@ -602,7 +578,7 @@ function! CommittedFiles()
 endfunction
 
 " Show list of last-committed files
-nnoremap <silent> <leader>g? :call CommittedFiles()<CR>:copen<CR>
+call MapEsc('<leader>g?', ':call CommittedFiles()<CR>:copen<CR>')
 
 " }}}
 
