@@ -336,7 +336,7 @@ call MapEsc('<leader>q', ':wa<CR>:redir => pwd<CR>:pwd<CR>:redir END<CR>:execute
 " Fuzzy find files
 let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work|.idea|.o|.hi)$' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work|.idea|.o|.hi|build)$' }
 
 " }}}
 
@@ -366,10 +366,10 @@ nnoremap <c-h> :update<CR><c-w>h
 nnoremap <c-j> :update<CR><c-w>j
 nnoremap <c-k> :update<CR><c-w>k
 nnoremap <c-l> :update<CR><c-w>l
-inoremap <c-h> <c-o>:update<CR><c-o><c-h>
-inoremap <c-j> <c-o>:update<CR><c-o><c-j>
-inoremap <c-k> <c-o>:update<CR><c-o><c-k>
-inoremap <c-l> <c-o>:update<CR><c-o><c-l>
+inoremap <c-h> <c-o>:update<CR><c-o><c-w>h
+inoremap <c-j> <c-o>:update<CR><c-o><c-w>j
+inoremap <c-k> <c-o>:update<CR><c-o><c-w>k
+inoremap <c-l> <c-o>:update<CR><c-o><c-w>l
 
 call MapEsc('<leader>r', '<space>output<CR>i<UP><CR><ESC><space><CR>')
 
