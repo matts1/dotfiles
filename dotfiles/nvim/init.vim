@@ -24,6 +24,8 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
+
 call MapCO('<c-_>', ':Commentary')
 
 " General {{{
@@ -82,7 +84,6 @@ endif
 " Support bundles
 Plug 'jgdavey/tslime.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'vim-scripts/gitignore'
@@ -108,6 +109,22 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Code completion
+Plug 'Sirver/ultisnips'
+Plug 'honza/vim-snippets'
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<CR>"
+let g:UltiSnipsJumpBackwardTrigger="<s-CR>"
+
+" Required to make ultisnips and youcompleteme play nice
+" Plug 'ervandew/supertab' 
+" Plug 'Valloric/YouCompleteMe'
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Debuggers
 Plug 'idanarye/vim-vebugger'
