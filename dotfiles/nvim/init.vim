@@ -423,7 +423,7 @@ nnoremap <leader>oo :CtrlP<CR>
 inoremap <leader>oo <ESC>:CtrlP<CR>
 
 " Debugger
-call MapCO('<leader>i', ':VBGcontinue')
+call MapCO('<leader>sc', ':VBGcontinue')
 call MapCO('<leader>l', ':VBGtoggleBreakpointThisLine')
 call MapCO('<leader>si', ':VBGstepIn')
 call MapCO('<leader>so', ':VBGstepOut')
