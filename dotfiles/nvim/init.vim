@@ -112,7 +112,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Code completion
 Plug 'Sirver/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'matts1/vim-snippets'
 " Set ultisnips triggers
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
