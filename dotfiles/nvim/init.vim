@@ -1,3 +1,17 @@
+if ! exists("mapleader")
+  let mapleader = ","
+endif
+
+if ! exists("g:mapleader")
+  let g:mapleader = ","
+endif
+
+" Leader key timeout
+set tm=2000
+
+" Allow the normal use of "," by pressing it twice
+noremap ,, ,
+
 function! MapEsc(keys, rhs)
     execute 'nmap' a:keys ':update<CR>' . a:rhs
     execute 'vmap' a:keys ':update<CR>' . a:rhs
@@ -40,22 +54,6 @@ set history=700
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-if ! exists("mapleader")
-  let mapleader = ","
-endif
-
-if ! exists("g:mapleader")
-  let g:mapleader = ","
-endif
-
-" Leader key timeout
-set tm=2000
-
-" Allow the normal use of "," by pressing it twice
-noremap ,, ,
 
 " Use par for prettier line formatting
 set formatprg=par
@@ -113,6 +111,8 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Code completion
 Plug 'Sirver/ultisnips'
 Plug 'matts1/vim-snippets'
+let g:ultisnips_python_style='google'
+
 " Set ultisnips triggers
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
