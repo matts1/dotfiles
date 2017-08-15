@@ -3,6 +3,7 @@
 cd $(dirname $0)/dotfiles
 GLOBIGNORE=".:.."
 
+# TODO use find instead of f (want recursive)
 for f in .*
 do
   result="/home/matt/$f"
@@ -17,6 +18,4 @@ do
   fi
 done
 
-ln -f -s "$(pwd)/nvim" ~/.config/nvim
-rm -f ~/.config/nvim/nvim
 ln -f -s "$(pwd)/.profile" /home/matt/.zprofile
