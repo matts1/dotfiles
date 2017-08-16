@@ -1,0 +1,63 @@
+# vim: set ft=sh
+
+alias ssh="env TERM=screen-256color ssh"
+
+#alias ranger="ranger-cd"
+alias ra="ranger-cd"
+
+alias p2="python2"
+alias p3="python3"
+alias p="p3"
+
+alias v="vim"
+alias vv="vim -u NONE"
+alias view="vim -R"
+
+alias m="make"
+alias mc="make clean"
+alias :q="exit"
+
+alias open.="open ."
+alias o="open ."
+alias oa="open -a"
+
+alias s.="s ."
+alias a="git add"
+alias s="git s"
+alias gdd="git difftool"
+alias gg="git grep -i -n --heading --break"
+alias lg="git lg"
+alias clo="git clone"
+alias gclo="gcl"
+alias git="nocorrect git"
+
+alias rg="rg -S \
+    --colors 'path:fg:green' \
+    --colors 'path:style:nobold' \
+    --colors 'line:fg:yellow' \
+    --colors 'line:style:nobold' \
+    --colors 'match:fg:black' \
+    --colors 'match:bg:yellow' \
+    --colors 'match:style:nobold'"
+# \
+#    -g '!Library/' \
+#    -g '!Downloads/' \
+#    -g '!Pictures/' \
+#    -g '!Music/'"
+
+if [ "`basename $SHELL`" = "zsh" ]; then
+    alias cd.="nocorrect cd ."
+    alias cd..="nocorrect cd .."
+    alias cd...="nocorrect cd ..."
+    alias cd....="nocorrect cd ...."
+    alias cd.....="nocorrect cd ....."
+    alias mv="nocorrect mv"
+    alias cp="nocorrect cp"
+    alias mkdir="nocorrect mkdir"
+else
+    alias cd.="cd ."
+    alias cd..="cd .."
+    alias cd...="cd ..."
+    alias cd....="cd ...."
+    alias cd.....="cd ....."
+fi

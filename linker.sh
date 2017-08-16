@@ -35,3 +35,6 @@ do
 done
 
 ln -f -v .profile ~/.zprofile
+mkdir -p ~/.config
+rm ~/.config/ranger
+ln -f -s -v "$(pwd)/../special/ranger" ~/.config

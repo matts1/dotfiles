@@ -2,7 +2,6 @@
 
 # Vi style keybindings
 bindkey -v
-bindkey -M viins 'kj' vi-cmd-mode
 
 zmodload zsh/terminfo
 #bindkey '^[[A'      history-substring-search-up

@@ -65,6 +65,20 @@ plugins=( \
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.shell_aliases
+source ~/.zsh_keybindings
+source ~/.zsh_styles
+source ~/.zsh_functions
+
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
+# gitsome completion
+if [ -d .gitsome ]; then
+    autoload bashcompinit
+    bashcompinit
+    source ~/.gitsome/gh_complete.sh
+fi
 
 # User configuration
 
