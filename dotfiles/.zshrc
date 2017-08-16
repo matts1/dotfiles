@@ -51,7 +51,18 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=( \
+    git \
+    history-search-multi-word \
+    history-substring-search \
+    # meteor \
+    # mosh \
+    # pip \
+    vi-mode \
+    virtualenv \
+    zsh-autosuggestions \
+    zsh-syntax-highlighting \
+)
 
 source $ZSH/oh-my-zsh.sh
 
