@@ -77,6 +77,7 @@
 # ===================================================================
 
 import re
+from collections import deque
 
 from ranger.api.commands import *
 

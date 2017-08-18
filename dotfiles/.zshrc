@@ -109,7 +109,5 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval $(thefuck --alias)
-
 # ensure that instead of getting "command not found", we get a suggestion about how to install it
 . /etc/zsh_command_not_found
