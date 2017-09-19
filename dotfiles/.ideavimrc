@@ -1,0 +1,267 @@
+if ! exists("mapleader")
+  let mapleader = ","
+endif
+
+if ! exists("g:mapleader")
+  let g:mapleader = ","
+endif
+
+" Leader key timeout
+set tm=2000
+
+" zsh
+set shell=zsh
+
+set showmode
+
+" Kill the damned Ex mode.
+nnoremap Q <nop>
+
+set nocompatible
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+" Always show current position
+set ruler
+set number
+set relativenumber
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" For regular expressions turn magic on
+set magic
+
+nnoremap U :redo<CR>
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+
+nmap <leader>r :action Rerun<CR>
+imap <leader>r <c-o>:action Rerun<CR>
+
+nmap <leader>sj :action SplitHorizontally<CR>
+imap <leader>sj <c-o>:action SplitHorizontally<CR>
+nmap <leader>sk :action SplitHorizontally<CR><c-k>
+imap <leader>sk <c-o>:action SplitHorizontally<CR><c-k>
+nmap <leader>sl :action SplitVertically<CR>
+imap <leader>sl <c-o>:action SplitVertically<CR>
+nmap <leader>sh :action SplitVertically<CR><c-h>
+imap <leader>sh <c-o>:action SplitVertically<CR><c-h>
+
+nmap <leader>bh :action PreviousTab<CR>
+imap <leader>bh <c-o>:action PreviousTab<CR>
+nmap <leader>bl :action NextTab<CR>
+imap <leader>bl <c-o>:action NextTab<CR>
+nmap <leader>bd :action CloseContent<CR>
+imap <leader>bd <c-o>:action CloseContent<CR>
+
+nmap <leader>oo :action GotoFile<CR>
+imap <leader>oo <c-o>:action GotoFile<CR>
+nmap <leader>oc :action GotoClass<CR>
+imap <leader>oc <c-o>:action GotoClass<CR>
+nmap <leader>os :action GotoSymbol<CR>
+imap <leader>os <c-o>:action GotoSymbol<CR>
+nmap <leader>ov :action SelectIn<CR>
+imap <leader>ov <c-o>:action SelectIn<CR>
+nmap <leader>od :action GotoDeclaration<CR>
+imap <leader>od <c-o>:action GotoDeclaration<CR>
+nmap <leader>oi :action GotoImplementation<CR>
+imap <leader>oi <c-o>:action GotoImplementation<CR>
+nmap <leader>ob :action GotoSuperMethod<CR>
+imap <leader>ob <c-o>:action GotoSuperMethod<CR>
+nmap <leader>ot :action GotoTest<CR>
+imap <leader>ot <c-o>:action GotoTest<CR>
+nmap <leader>of :action ShowFilePath<CR>
+imap <leader>of <c-o>:action ShowFilePath<CR>
+nmap <leader>oe :action GotoNextError<CR>
+imap <leader>oe <c-o>:action GotoNextError<CR>
+nmap <leader>oE :action GotoPreviousError<CR>
+imap <leader>oE <c-o>:action GotoPreviousError<CR>
+nmap <leader>om :action MethodDown<CR>
+imap <leader>om <c-o>:action MethodDown<CR>
+nmap <leader>oM :action MethodUp<CR>
+imap <leader>oM <c-o>:action MethodUp<CR>
+
+nmap <leader>co :action OverrideMethods<CR>
+imap <leader>co <c-o>:action OverrideMethods<CR>
+nmap <leader>ci :action ImplementMethods<CR>
+imap <leader>ci <c-o>:action ImplementMethods<CR>
+nmap <leader>cg :action Generate<CR>
+imap <leader>cg <c-o>:action Generate<CR>
+nmap <leader>cs :action SurroundWith<CR>
+imap <leader>cs <c-o>:action SurroundWith<CR>
+nmap <leader>cS :action Unwrap<CR>
+imap <leader>cS <c-o>:action Unwrap<CR>
+nmap <leader>cr :action RenameElement<CR>
+imap <leader>cr <c-o>:action RenameElement<CR>
+nmap <leader>cm :action Move<CR>
+imap <leader>cm <c-o>:action Move<CR>
+nmap <leader>cv :action IntroduceVariable<CR>
+imap <leader>cv <c-o>:action IntroduceVariable<CR>
+nmap <leader>cf :action ExtractMethod<CR>
+imap <leader>cf <c-o>:action ExtractMethod<CR>
+nmap <leader>cF :action Inline<CR>
+imap <leader>cF <c-o>:action Inline<CR>
+
+nmap <leader>dg :action ShowExecutionPoint<CR>
+imap <leader>dg <c-o>:action ShowExecutionPoint<CR>
+nmap <leader>db :action ToggleLineBreakPoint<CR>
+imap <leader>db <c-o>:action ToggleLineBreakPoint<CR>
+nmap <leader>de :action ToggleBreakPointEnabled<CR>
+imap <leader>de <c-o>:action ToggleBreakPointEnabled<CR>
+
+nmap <leader>ml :action TabShiftActions.ShiftRight<CR>
+imap <leader>ml <c-o>:action TabShiftActions.ShiftRight<CR>
+nmap <leader>mh :action TabShiftActions.ShiftLeft<CR>
+imap <leader>mh <c-o>:action TabShiftActions.ShiftLeft<CR>
+nmap <leader>mj :action TabShiftActions.ShiftDown<CR>
+imap <leader>mj <c-o>:action TabShiftActions.ShiftDown<CR>
+nmap <leader>mk :action TabShiftActions.ShiftUp<CR>
+imap <leader>mk <c-o>:action TabShiftActions.ShiftUp<CR>
+nmap <leader>mm :action MoveEditorToOppositeTabGroup<CR>
+imap <leader>mm <c-o>:action MoveEditorToOppositeTabGroup<CR>
+nmap <leader>Mm :action OpenEditorInOppositeTabGroup<CR>
+imap <leader>Mm <c-o>:action OpenEditorInOppositeTabGroup<CR>
+
+nmap <leader>al :action TabShiftActions.StretchRight<CR>
+imap <leader>al <c-o>:action TabShiftActions.StretchRight<CR>
+nmap <leader>ah :action TabShiftActions.StretchLeft<CR>
+imap <leader>ah <c-o>:action TabShiftActions.StretchLeft<CR>
+nmap <leader>aj :action TabShiftActions.StretchDown<CR>
+imap <leader>aj <c-o>:action TabShiftActions.StretchDown<CR>
+nmap <leader>ak :action TabShiftActions.StretchUp<CR>
+imap <leader>ak <c-o>:action TabShiftActions.StretchUp<CR>
+
+nmap <leader>gs :action AceAction<CR>
+imap <leader>gs <c-o>:action AceAction<CR>
+nmap <leader>gf :action AceTargetAction<CR>
+imap <leader>gf <c-o>:action AceTargetAction<CR>
+nmap <leader>gb :action OpenInBrowser<CR>
+imap <leader>gb <c-o>:action OpenInBrowser<CR>
+nmap <leader>gd :action Django.RunManageTaskAction<CR>
+imap <leader>gd <c-o>:action Django.RunManageTaskAction<CR>
+nmap <leader>gh :action com.jetbrains.plugins.remotesdk.console.RunSshConsoleAction<CR>
+imap <leader>gh <c-o>:action com.jetbrains.plugins.remotesdk.console.RunSshConsoleAction<CR>
+
+nmap <leader>lo <leader>oo<leader>ml
+imap <leader>lo <leader>oo<leader>ml
+nmap <leader>lc <leader>oc<leader>ml
+imap <leader>lc <leader>oc<leader>ml
+nmap <leader>ls <leader>os<leader>ml
+imap <leader>ls <leader>os<leader>ml
+nmap <leader>lv <leader>ov<leader>ml
+imap <leader>lv <leader>ov<leader>ml
+nmap <leader>ld <leader>od<leader>ml
+imap <leader>ld <leader>od<leader>ml
+nmap <leader>li <leader>oi<leader>ml
+imap <leader>li <leader>oi<leader>ml
+nmap <leader>lb <leader>ob<leader>ml
+imap <leader>lb <leader>ob<leader>ml
+nmap <leader>lt <leader>ot<leader>ml
+imap <leader>lt <leader>ot<leader>ml
+nmap <leader>lf <leader>of<leader>ml
+imap <leader>lf <leader>of<leader>ml
+nmap <leader>le <leader>oe<leader>ml
+imap <leader>le <leader>oe<leader>ml
+nmap <leader>lE <leader>oE<leader>ml
+imap <leader>lE <leader>oE<leader>ml
+
+nmap <leader>ho <leader>oo<leader>mh
+imap <leader>ho <leader>oo<leader>mh
+nmap <leader>hc <leader>oc<leader>mh
+imap <leader>hc <leader>oc<leader>mh
+nmap <leader>hs <leader>os<leader>mh
+imap <leader>hs <leader>os<leader>mh
+nmap <leader>hv <leader>ov<leader>mh
+imap <leader>hv <leader>ov<leader>mh
+nmap <leader>hd <leader>od<leader>mh
+imap <leader>hd <leader>od<leader>mh
+nmap <leader>hi <leader>oi<leader>mh
+imap <leader>hi <leader>oi<leader>mh
+nmap <leader>hb <leader>ob<leader>mh
+imap <leader>hb <leader>ob<leader>mh
+nmap <leader>ht <leader>ot<leader>mh
+imap <leader>ht <leader>ot<leader>mh
+nmap <leader>hf <leader>of<leader>mh
+imap <leader>hf <leader>of<leader>mh
+nmap <leader>he <leader>oe<leader>mh
+imap <leader>he <leader>oe<leader>mh
+nmap <leader>hE <leader>oE<leader>mh
+imap <leader>hE <leader>oE<leader>mh
+
+nmap <leader>jo <leader>oo<leader>mj
+imap <leader>jo <leader>oo<leader>mj
+nmap <leader>jc <leader>oc<leader>mj
+imap <leader>jc <leader>oc<leader>mj
+nmap <leader>js <leader>os<leader>mj
+imap <leader>js <leader>os<leader>mj
+nmap <leader>jv <leader>ov<leader>mj
+imap <leader>jv <leader>ov<leader>mj
+nmap <leader>jd <leader>od<leader>mj
+imap <leader>jd <leader>od<leader>mj
+nmap <leader>ji <leader>oi<leader>mj
+imap <leader>ji <leader>oi<leader>mj
+nmap <leader>jb <leader>ob<leader>mj
+imap <leader>jb <leader>ob<leader>mj
+nmap <leader>jt <leader>ot<leader>mj
+imap <leader>jt <leader>ot<leader>mj
+nmap <leader>jf <leader>of<leader>mj
+imap <leader>jf <leader>of<leader>mj
+nmap <leader>je <leader>oe<leader>mj
+imap <leader>je <leader>oe<leader>mj
+nmap <leader>jE <leader>oE<leader>mj
+imap <leader>jE <leader>oE<leader>mj
+
+nmap <leader>ko <leader>oo<leader>mk
+imap <leader>ko <leader>oo<leader>mk
+nmap <leader>kc <leader>oc<leader>mk
+imap <leader>kc <leader>oc<leader>mk
+nmap <leader>ks <leader>os<leader>mk
+imap <leader>ks <leader>os<leader>mk
+nmap <leader>kv <leader>ov<leader>mk
+imap <leader>kv <leader>ov<leader>mk
+nmap <leader>kd <leader>od<leader>mk
+imap <leader>kd <leader>od<leader>mk
+nmap <leader>ki <leader>oi<leader>mk
+imap <leader>ki <leader>oi<leader>mk
+nmap <leader>kb <leader>ob<leader>mk
+imap <leader>kb <leader>ob<leader>mk
+nmap <leader>kt <leader>ot<leader>mk
+imap <leader>kt <leader>ot<leader>mk
+nmap <leader>kf <leader>of<leader>mk
+imap <leader>kf <leader>of<leader>mk
+nmap <leader>ke <leader>oe<leader>mk
+imap <leader>ke <leader>oe<leader>mk
+nmap <leader>kE <leader>oE<leader>mk
+imap <leader>kE <leader>oE<leader>mk
+
+nmap <leader>Oo <leader>oo<leader>mm
+imap <leader>Oo <leader>oo<leader>mm
+nmap <leader>Oc <leader>oc<leader>mm
+imap <leader>Oc <leader>oc<leader>mm
+nmap <leader>Os <leader>os<leader>mm
+imap <leader>Os <leader>os<leader>mm
+nmap <leader>Ov <leader>ov<leader>mm
+imap <leader>Ov <leader>ov<leader>mm
+nmap <leader>Od <leader>od<leader>mm
+imap <leader>Od <leader>od<leader>mm
+nmap <leader>Oi <leader>oi<leader>mm
+imap <leader>Oi <leader>oi<leader>mm
+nmap <leader>Ob <leader>ob<leader>mm
+imap <leader>Ob <leader>ob<leader>mm
+nmap <leader>Ot <leader>ot<leader>mm
+imap <leader>Ot <leader>ot<leader>mm
+nmap <leader>Of <leader>of<leader>mm
+imap <leader>Of <leader>of<leader>mm
+nmap <leader>Oe <leader>oe<leader>mm
+imap <leader>Oe <leader>oe<leader>mm
+nmap <leader>OE <leader>oE<leader>mm
+imap <leader>OE <leader>oE<leader>mm
+

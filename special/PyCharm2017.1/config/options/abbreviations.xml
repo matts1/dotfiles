@@ -1,0 +1,10 @@
+<application>
+  <component name="AbbreviationManager">
+    <abbreviations>
+      <action id="VimWindowRight" />
+      <action id="VimWindowDown" />
+      <action id="VimWindowLeft" />
+      <action id="VimWindowUp" />
+    </abbreviations>
+  </component>
+</application>

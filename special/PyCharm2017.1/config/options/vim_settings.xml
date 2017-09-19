@@ -1,0 +1,237 @@
+<application>
+  <component name="VimSettings">
+    <state version="4" enabled="true" />
+    <globalmarks />
+    <filemarks>
+      <file name="/Dummy.txt" timestamp="1505815028980">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Uni/nsgive/nsgive/urls.py" timestamp="1505808719680">
+        <mark key="[" line="23" column="1" />
+        <mark key="]" line="30" column="17" />
+        <mark key="." line="30" column="17" />
+        <mark key="^" line="30" column="17" />
+      </file>
+      <file name="$USER_HOME$/.ideavimrc" timestamp="1505814999494">
+        <mark key="[" line="45" column="1" />
+        <mark key="]" line="45" column="1" />
+        <mark key="." line="45" column="1" />
+      </file>
+      <file name="/Python Console" timestamp="1505805944658">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Uni/nsgive/courses/views.py" timestamp="1505815542198">
+        <mark key="[" line="9" column="10" />
+        <mark key="]" line="9" column="9" />
+        <mark key="^" line="9" column="9" />
+        <mark key="." line="9" column="9" />
+      </file>
+      <file name="$USER_HOME$/Uni/nsgive/courses/urls.py" timestamp="1505807018429">
+        <mark key="[" line="6" column="54" />
+        <mark key="]" line="6" column="53" />
+        <mark key="^" line="6" column="53" />
+        <mark key="." line="6" column="53" />
+      </file>
+      <file name="/manage.py@nsgive" timestamp="1505811155598">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Uni/nsgive/templates/index.html" timestamp="1505811471499">
+        <mark key="a" line="18" column="7" />
+        <mark key="'" line="22" column="0" />
+        <mark key="[" line="2" column="3" />
+        <mark key="]" line="2" column="3" />
+        <mark key="^" line="22" column="7" />
+        <mark key="." line="2" column="3" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="17" column="1" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="21" column="0" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="4" column="7" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="11" column="0" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="20" column="13" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="14" column="3" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="2" column="3" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="22" column="0" filename="$USER_HOME$/Uni/nsgive/templates/index.html" />
+      <jump line="8" column="13" filename="$USER_HOME$/Uni/nsgive/courses/views.py" />
+      <jump line="64" column="0" filename="$USER_HOME$/.ideavimrc" />
+    </jumps>
+    <registers>
+      <register name="&quot;" type="4">
+        <text>e</text>
+      </register>
+      <register name="h" type="4">
+        <text encoding="base64">Zj5scmgkcmhqMA==</text>
+      </register>
+      <register name="j" type="4">
+        <text encoding="base64">Zj5scmokcmowag==</text>
+      </register>
+      <register name="k" type="4">
+        <text encoding="base64">Zj5scmskcmswag==</text>
+      </register>
+      <register name="-" type="4">
+        <text>e</text>
+      </register>
+      <register name="m" type="4">
+        <text encoding="base64">Zj5sck8kcm0wag==</text>
+      </register>
+      <register name="/" type="4">
+        <text>block</text>
+      </register>
+      <register name="o" type="4">
+        <keys>
+          <key char="102" code="0" mods="0" />
+          <key char="58" code="0" mods="0" />
+          <key char="100" code="0" mods="0" />
+          <key char="36" code="0" mods="0" />
+          <key char="66" code="0" mods="0" />
+          <key char="121" code="0" mods="0" />
+          <key char="36" code="0" mods="0" />
+          <key char="80" code="0" mods="0" />
+          <key char="97" code="0" mods="0" />
+          <key char="65535" code="27" mods="0" />
+          <key char="65" code="0" mods="0" />
+          <key char="65535" code="8" mods="0" />
+          <key char="60" code="0" mods="0" />
+          <key char="108" code="0" mods="0" />
+          <key char="101" code="0" mods="0" />
+          <key char="97" code="0" mods="0" />
+          <key char="100" code="0" mods="0" />
+          <key char="101" code="0" mods="0" />
+          <key char="114" code="0" mods="0" />
+          <key char="62" code="0" mods="0" />
+          <key char="109" code="0" mods="0" />
+          <key char="108" code="0" mods="0" />
+          <key char="65535" code="27" mods="0" />
+          <key char="106" code="0" mods="0" />
+          <key char="48" code="0" mods="0" />
+        </keys>
+      </register>
+      <register name="0" type="2">
+        <text encoding="base64">bm1hcCA8bGVhZGVyPm1tIDphY3Rpb24gTW92ZUVkaXRvclRvT3Bwb3NpdGVUYWJHcm91cDxDUj4K</text>
+      </register>
+      <register name="q" type="4">
+        <keys>
+          <key char="108" code="0" mods="0" />
+          <key char="105" code="0" mods="0" />
+          <key char="110" code="0" mods="0" />
+          <key char="111" code="0" mods="0" />
+          <key char="114" code="0" mods="0" />
+          <key char="101" code="0" mods="0" />
+          <key char="65535" code="27" mods="0" />
+          <key char="48" code="0" mods="0" />
+          <key char="107" code="0" mods="0" />
+        </keys>
+      </register>
+      <register name="1" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">IiBkZWJ1Z2dpbmcK</text>
+      </register>
+      <register name="3" type="2">
+        <text encoding="base64">IiBydW5uaW5nCg==</text>
+      </register>
+      <register name="4" type="2">
+        <text encoding="base64">IiBtb3ZpbmcgcGFuZWxzCg==</text>
+      </register>
+      <register name="5" type="2">
+        <text encoding="base64">IiBUT0RPOiBhY2VqdW1wCg==</text>
+      </register>
+      <register name="6" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="7" type="2">
+        <text encoding="base64">bm1hcCA8bGVhZGVyPnQgOiEK</text>
+      </register>
+      <register name="8" type="2">
+        <text encoding="base64">aW5vcmVtYXAgPGxlYWRlcj5qIDxjLW8+PGMtdz5qCg==</text>
+      </register>
+      <register name="9" type="2">
+        <text encoding="base64">aW5vcmVtYXAgPGxlYWRlcj5rIDxjLW8+PGMtdz5rCg==</text>
+      </register>
+      <register name=":" type="4">
+        <text>action CloseContent</text>
+      </register>
+    </registers>
+    <search>
+      <last-search>block</last-search>
+      <last-offset />
+      <last-pattern>block</last-pattern>
+      <last-replace>a</last-replace>
+      <last-substitute>course</last-substitute>
+      <last-dir>1</last-dir>
+      <show-last>false</show-last>
+    </search>
+    <history>
+      <history-search>
+        <entry>hello</entry>
+        <entry>course</entry>
+        <entry encoding="base64">XDxibG9ja1w+</entry>
+        <entry>block</entry>
+      </history-search>
+      <history-cmd>
+        <entry>action MethodUp</entry>
+        <entry>action MethodDown</entry>
+        <entry>action Delete</entry>
+        <entry>action SafeDelete</entry>
+        <entry>action RunSshConsoleAction</entry>
+        <entry>action com.jetbrains.plugins.remotesdk.console.RunSshConsoleAction</entry>
+        <entry>redo</entry>
+        <entry>action SplitHorizontally</entry>
+        <entry>action TabShiftActions.ShiftLeft</entry>
+        <entry>action GotoFile</entry>
+        <entry>action OpenEditorInOppositeTabGroup</entry>
+        <entry>action TabShiftActions.ShiftUp</entry>
+        <entry>action NextTab</entry>
+        <entry>action MoveEditorToOppositeTabGroup</entry>
+        <entry>action GotoDeclaration</entry>
+        <entry>action GotoImplementation</entry>
+        <entry>w</entry>
+        <entry>action GotoSuperMethod</entry>
+        <entry>action TabShiftActions.ShiftRight</entry>
+        <entry>action CloseContent</entry>
+      </history-cmd>
+      <history-expr />
+      <history-input />
+    </history>
+    <shortcut-conflicts>
+      <shortcut-conflict owner="ide">
+        <text>ctrl pressed F</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed W</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text>ctrl pressed L</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed O</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text>ctrl pressed A</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed P</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed V</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed H</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text>ctrl pressed T</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed J</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed K</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text>ctrl pressed R</text>
+      </shortcut-conflict>
+    </shortcut-conflicts>
+  </component>
+</application>

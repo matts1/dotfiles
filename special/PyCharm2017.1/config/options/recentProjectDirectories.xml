@@ -1,0 +1,79 @@
+<application>
+  <component name="RecentDirectoryProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/Uni/nsgive" />
+        <option value="$USER_HOME$/Uni/comp9444/ass1" />
+        <option value="/dos/Documents/macros" />
+        <option value="$USER_HOME$/programming/PCsocDiscordBot-Python" />
+        <option value="$USER_HOME$/dotfiles" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/Uni/nsgive" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/Uni/nsgive" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="/dos/Documents/macros">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-171.4249.47" />
+              <option name="productionCode" value="PY" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1502701080575" />
+              <option name="buildTimestamp" value="1493218858736" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Uni/comp9444/ass1">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-171.4249.47" />
+              <option name="productionCode" value="PY" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1505644906882" />
+              <option name="buildTimestamp" value="1493218844882" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Uni/nsgive">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-171.4249.47" />
+              <option name="productionCode" value="PY" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1505815871792" />
+              <option name="buildTimestamp" value="1493218809758" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/dotfiles">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-171.4249.47" />
+              <option name="productionCode" value="PY" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1497295913942" />
+              <option name="buildTimestamp" value="1493218852052" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/programming/PCsocDiscordBot-Python">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-171.4249.47" />
+              <option name="productionCode" value="PY" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1497495571068" />
+              <option name="buildTimestamp" value="1493218829319" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$" />
+  </component>
+</application>

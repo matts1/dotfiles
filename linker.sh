@@ -38,3 +38,8 @@ ln -f -v .profile ~/.zprofile
 mkdir -p ~/.config
 rm ~/.config/ranger
 ln -f -s -v "$(pwd)/../special/ranger" ~/.config
+
+PYCHARM_DIR="PyCharm2017.1"
+
+mkdir -p "~/.$PYCHARM_DIR"
+ln -f -s -v "$(pwd)/../special/$PYCHARM_DIR/config" ~/.$PYCHARM_DIR

@@ -1,0 +1,36 @@
+<application>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="AbstractNewProjectStep.Pure Python" count="1" />
+      <entry feature="CreateFile.CreateFileAction" count="5" />
+      <entry feature="OpenInBrowser.Chrome" count="1" />
+      <entry feature="OpenInBrowser.default" count="1" />
+      <entry feature="StripeButton[Version_Control].shown" count="4" />
+      <entry feature="django.manage.py.not.in.project.root" count="1" />
+      <entry feature="execute.Python.DjangoServer.ConcurrencyExecutor" count="1" />
+      <entry feature="execute.Python.DjangoServer.Coverage" count="2" />
+      <entry feature="execute.Python.DjangoServer.Debug" count="4" />
+      <entry feature="execute.Python.DjangoServer.Run" count="13" />
+      <entry feature="execute.PythonConfigurationType.Debug" count="21" />
+      <entry feature="execute.PythonConfigurationType.Run" count="34" />
+      <entry feature="git.branch.checkout.remote" count="1" />
+      <entry feature="ide.settings.Appearance" count="1" />
+      <entry feature="ide.settings.Font" count="1" />
+      <entry feature="ide.settings.Keymap" count="15" />
+      <entry feature="ide.settings.Plugins" count="4" />
+      <entry feature="ide.settings.Project_Interpreter" count="2" />
+      <entry feature="ide.settings.Terminal" count="1" />
+      <entry feature="ide.settings.Version_Control" count="1" />
+      <entry feature="ide.settings.Vim_Emulation" count="4" />
+      <entry feature="ideaapp.started" count="37" />
+      <entry feature="python.console.local" count="1" />
+      <entry feature="terminal.linux" count="17" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure" count="2" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure.DesktopEntry" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.GetFromVcs" count="2" />
+      <entry feature="welcome.screen.WelcomeScreen.OpenDirectoryProject" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.Plugins" count="1" />
+      <entry feature="welcome.screen.null" count="1" />
+    </counts>
+  </component>
+</application>
