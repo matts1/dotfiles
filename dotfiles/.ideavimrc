@@ -112,10 +112,10 @@ imap <leader>cF <c-o>:action Inline<CR>
 
 nmap <leader>dg :action ShowExecutionPoint<CR>
 imap <leader>dg <c-o>:action ShowExecutionPoint<CR>
-nmap <leader>db :action ToggleLineBreakPoint<CR>
-imap <leader>db <c-o>:action ToggleLineBreakPoint<CR>
-nmap <leader>de :action ToggleBreakPointEnabled<CR>
-imap <leader>de <c-o>:action ToggleBreakPointEnabled<CR>
+nmap <leader>db :action ToggleLineBreakpoint<CR>
+imap <leader>db <c-o>:action ToggleLineBreakpoint<CR>
+nmap <leader>de :action ToggleBreakpointEnabled<CR>
+imap <leader>de <c-o>:action ToggleBreakpointEnabled<CR>
 
 nmap <leader>ml :action TabShiftActions.ShiftRight<CR>
 imap <leader>ml <c-o>:action TabShiftActions.ShiftRight<CR>
